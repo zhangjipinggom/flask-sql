@@ -1,6 +1,6 @@
 # flask-sql
 a system with resigter and customed definition
-
+this project is a combination of https://github.com/anfederico/Flaskex and https://github.com/xuweicn1/Todolist
 
 usage:
 1. git or dowmload all files
