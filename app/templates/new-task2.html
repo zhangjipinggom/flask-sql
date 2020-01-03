@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+{% block content %}
+    <form action="" method=post>
+    <h2>{%- if todo is defined %} Edit {% else %} Create New {% endif -%}Item</h2>
+        <div class="control-group">
+            <div class="control-group" >
+                <div class="controls">
+                    <select class="selectpicker" name="student" required>
+                        {% for student in students %}
+                            <option value="{{ student.id }}" {%if todo is defined %}{% if todo.student_id == student.id %} selected {% endif %}{% endif %}>{{ student.name }}</option>
+                        {% endfor %}
+                    </select>
+                    <select class="selectpicker" name="category" required>
+                        {% for category in categories %}
+                            <option value="{{ category.id }}" {%if todo is defined %}{% if todo.category_id == category.id %} selected {% endif %}{% endif %}>{{ category.name }}</option>
+                        {% endfor %}
+                    </select>
+                    <select class="selectpicker" name="scoreweight" required>
+                        {% for scoreweight in scoreweights %}
+                            <option value="{{ scoreweight.id }}" {%if todo is defined %}{% if todo.scoreweight.id == scoreweight.id %} selected {% endif %}{% endif %}>{{ scoreweight.value }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <hr>
+            <div class="control-group">
+                <div class="controls">
+                    <input 
+                        type="text" 
+                        id="description" 
+                        name="description" 
+                        maxlength="60" 
+                        class="form-control input-xlarge"
+                        placeholder="Describe TODO" 
+                        {% if todo is defined -%}
+                            value="{{ todo.description }}"
+                        {% endif -%}
+                        required
+                      />
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="control-group">
+            <div class="controls">
+                <button type="submit" class="btn btn-success">
+                    {% if todo %}
+                        Save
+                    {% else %}
+                        Create Item
+                    {% endif %}
+                </button>
+            </div>
+        </div>
+    </form>
+{% endblock %}

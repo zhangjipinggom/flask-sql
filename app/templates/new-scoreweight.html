@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% block content %}
+    <form action="" method=post class="form-horizontal">
+
+    {% if scoreweight is defined %}
+        <h2>Edit Score Weight</h2>
+    {% else %}
+        <h2>Create Score Weight</h2>
+    {% endif %}
+
+    <div class="control-group">
+
+            <div class="control-group">
+
+                <div class="controls">
+                        <input type="text" id="scoreweight" name="scoreweight" maxlength="20" class="input-xlarge form-control"#}
+                               placeholder="Please give score weight"{% if scoreweight is defined %} value="{{ scoreweight.value }}"{% endif %}
+                               autofocus=1 required>
+                </div>
+            </div>
+        </div>
+<hr>
+     <div class="control-group">
+            <div class="controls">
+             <button type="submit" class="btn btn-success">
+                {% if scoreweight %}
+                    Save
+                {% else %}
+                    Create score weight
+                {% endif %}
+             </button>
+            </div>
+        </div>
+    </form>
+{% endblock %}
